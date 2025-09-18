@@ -6,18 +6,23 @@ import App from './app.js';
 
 const cli = meow(
 	`
-		Usage
-		  $ microcoder
+	Usage
+	  $ microcoder
 
-		Options
-			--name  Your name
+	Options
+		--name  Your name
 
-		Examples
-		  $ microcoder --name=Jane
-		  Hello, Jane
-	`,
+	Examples
+	  $ microcoder --name=Jane
+	  Hello, Jane
+`,
 	{
 		importMeta: import.meta,
+		flags: {
+			name: {
+				type: 'string',
+			},
+		},
 	},
 );
 
