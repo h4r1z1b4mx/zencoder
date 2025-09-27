@@ -1,9 +1,10 @@
 import React from "react"
+import { ThemeContext } from "./hooks/useTheme"
 export default function App() {
 
 	return (
-		<div>
-			HI
-		</div>
+		<ThemeContext.Provider >
+
+		</ThemeContext.Provider>
 	)
 }
