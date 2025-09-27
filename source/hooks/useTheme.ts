@@ -7,6 +7,7 @@ export interface ThemeContextType {
 	setCurrentTheme: (theme: ThemePreset) => void;
 }
 
+
 export const  ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function useTheme() {

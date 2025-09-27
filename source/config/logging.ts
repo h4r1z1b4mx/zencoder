@@ -1,15 +1,18 @@
-import { LogLevel } from "../types/config.js";
+import { LogLevel } from "../types/config"
 
 
-let currentLogLevel:LogLevel = 'normal';
+let currentLogLevel: LogLevel = 'normal';
 
+export function shouldLog(level: 'info' | 'warn' | 'error' | 'debug') : boolean {
 
-export function shouldLog(level: 'info' | 'warn' | 'error' | 'debug') :boolean{
-	if (currentLogLevel == 'silent'){
+	// In silent mode only show error
+	if (currentLogLevel === 'silent'){
 		return level === 'error';
 	}
-	if (currentLogLevel == 'normal'){
+	// In normal mode show error and warn not debug
+	if (currentLogLevel === 'normal') {
 		return level === 'error' || level === 'warn';
 	}
+
 	return true;
 }

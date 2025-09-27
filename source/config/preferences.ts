@@ -1,20 +1,19 @@
 import { existsSync } from "fs";
-import { join } from "path";
 import { homedir } from "os";
-import  type { UserPreferences } from "../types/config.js";
+import { join } from "path";
+import { shouldLog } from "./logging";
 
+const PREFERENCES_PATH = join(homedir(), ".zencoder-preferences.json");
 
-const PREFERENCES_PATH = join(homedir(), ".microcoder-preferences.json")
+export function loadPreferences() {
+	if (existsSync(PREFERENCES_PATH)) {
+		try {
 
-export function loadPreferences(): UserPreferences {
-	if (existsSync(PREFERENCES_PATH)){
-		try{
+		} catch (error) {
+			if (shouldLog) {
 
-		} catch(error){
-			if(shouldLog("warn")){
-				
 			}
 		}
 	}
-	return {}
+	return {};
 }
