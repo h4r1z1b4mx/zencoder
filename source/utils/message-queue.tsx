@@ -1,5 +1,5 @@
 import { MessageType } from "../types/utils";
-
+import ErrorMessage from '../components/error-message.js';
 
 let globalAddToChatQueue : ((component: React.ReactNode) => void) |null = null;
 let componentKeyCounter = 0;
@@ -24,7 +24,11 @@ if (!globalAddToChatQueue) {
 	switch (type) {
 		case 'error':
 			component = (
-				
+				<ErrorMessage
+					key={key}
+					message={message}
+					hideBox={hideBox}
+				/>
 			);
 			break;
 		case 'success':
