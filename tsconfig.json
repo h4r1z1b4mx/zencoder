@@ -1,7 +1,22 @@
 {
-	"extends": "@sindresorhus/tsconfig",
 	"compilerOptions": {
-		"outDir": "dist"
+		"target": "ES2022",
+		"lib": ["ES2022"],
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"outDir": "dist",
+		"rootDir": "source",
+		"strict": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"jsx": "react-jsx",
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"types": ["node"]
 	},
-	"include": ["source"]
+	"include": ["source/**/*"],
+	"exclude": ["dist", "node_modules"]
 }
