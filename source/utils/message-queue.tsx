@@ -1,21 +1,21 @@
-import { MessageType } from "../types/utils.js";
+import { MessageType } from "../types/utils";
 
-let globalAddToChatQueue: ((component: React.ReactNode) => void) | null = null;
+
+let globalAddToChatQueue : ((component: React.ReactNode) => void) |null = null;
 let componentKeyCounter = 0;
 
 
-// Helper function to generate stable keys
+// Helper function to generate a key
 function getNextKey(): string {
 	componentKeyCounter++;
-	return `global-msg-${componentKeyCounter}`;
+	return `global-msg-queue-${componentKeyCounter}`
 }
 
-
-export function addMessageToQueue(type: MessageType, message: string, hideBox: boolean = true){
-	if(!globalAddToChatQueue){
-		// Fallback to console if queue not available
-		console[type === 'error'? 'error':'log'](message);
-		return
+// Add message to chat queue
+if (!globalAddToChatQueue) {
+		export function addMessageToQueue(type: MessageType, message: string, hideBox:boolean = true){
+		console[type==='error'?'error' :'log'](message);
+		return;
 	}
 
 	const key = getNextKey();
@@ -25,12 +25,24 @@ export function addMessageToQueue(type: MessageType, message: string, hideBox: b
 		case 'error':
 			component = (
 				
-			)
+			);
+			break;
+		case 'success':
+			component = (
+
+			);
+			break;
+		case 'info':
+		default:
+			component = (
+
+			);
+		break;
 	}
+
 }
 
 
+export function logError() {
 
-export function logError(message: string, hideBox: boolean = true){
-	addMessageToQueue('error', message, hideBox);
 }

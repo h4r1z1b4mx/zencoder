@@ -2,6 +2,7 @@ import { existsSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
 import { shouldLog } from "./logging";
+import { logError } from "../utils/message-queue";
 
 const PREFERENCES_PATH = join(homedir(), ".zencoder-preferences.json");
 
@@ -10,8 +11,8 @@ export function loadPreferences() {
 		try {
 
 		} catch (error) {
-			if (shouldLog) {
-
+			if (shouldLog('warn')) {
+				logError();
 			}
 		}
 	}
