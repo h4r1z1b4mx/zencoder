@@ -1,7 +1,9 @@
-
+import React from "react"
 export default function App() {
-	const appState = useAppState();
-	return (
 
+	return (
+		<div>
+			HI
+		</div>
 	)
 }

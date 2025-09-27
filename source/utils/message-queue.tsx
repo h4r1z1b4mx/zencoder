@@ -24,7 +24,7 @@ export function addMessageToQueue(type: MessageType, message: string, hideBox: b
 	switch (type) {
 		case 'error':
 			component = (
-				<
+				
 			)
 	}
 }
