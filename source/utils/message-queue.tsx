@@ -1,6 +1,7 @@
-import { MessageType } from "../types/utils";
+import { MessageType } from "../types/utils.js";
 import ErrorMessage from '../components/error-message.js';
 import SuccessMessage from '../components/success-message.js'
+import InfoMessage from '../components/info-message.js'
 let globalAddToChatQueue : ((component: React.ReactNode) => void) |null = null;
 let componentKeyCounter = 0;
 
@@ -43,7 +44,11 @@ export function addMessageToQueue(type: MessageType, message: string, hideBox:bo
 		case 'info':
 		default:
 			component = (
-
+				<InfoMessage
+					key={key}
+					message={message}
+					hideBox={hideBox}
+				/>
 			);
 		break;
 	}
@@ -51,6 +56,6 @@ export function addMessageToQueue(type: MessageType, message: string, hideBox:bo
 }
 
 
-export function logError() {
-
+export function logError(message:string, hideBox: boolean=true) {
+	addMessageToQueue('error', message, hideBox);
 }
