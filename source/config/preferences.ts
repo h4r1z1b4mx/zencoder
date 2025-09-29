@@ -1,12 +1,13 @@
 import { existsSync, readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
+import type {UserPreferences} from '../types/index.js'
 import { shouldLog } from "./logging.js";
 import { logError } from "../utils/message-queue.js";
 
 const PREFERENCES_PATH = join(homedir(), ".zencoder-preferences.json");
 
-export function loadPreferences(){
+export function loadPreferences():UserPreferences{
 	if (existsSync(PREFERENCES_PATH)) {
 		try {
 			const data = readFileSync(PREFERENCES_PATH, 'utf-8');
