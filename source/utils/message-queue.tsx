@@ -1,6 +1,6 @@
 import { MessageType } from "../types/utils";
 import ErrorMessage from '../components/error-message.js';
-
+import SuccessMessage from '../components/success-message.js'
 let globalAddToChatQueue : ((component: React.ReactNode) => void) |null = null;
 let componentKeyCounter = 0;
 
@@ -12,8 +12,8 @@ function getNextKey(): string {
 }
 
 // Add message to chat queue
-if (!globalAddToChatQueue) {
-		export function addMessageToQueue(type: MessageType, message: string, hideBox:boolean = true){
+export function addMessageToQueue(type: MessageType, message: string, hideBox:boolean = true){
+	if (!globalAddToChatQueue) {
 		console[type==='error'?'error' :'log'](message);
 		return;
 	}
@@ -33,7 +33,11 @@ if (!globalAddToChatQueue) {
 			break;
 		case 'success':
 			component = (
-
+				<SuccessMessage
+					key={key}
+					message={message}
+					hideBox={hideBox}
+				/>
 			);
 			break;
 		case 'info':
