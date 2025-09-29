@@ -1,5 +1,5 @@
 import {useContext, createContext} from 'react';
-import { Colors, ThemePreset } from '../types/ui';
+import { Colors, ThemePreset } from '../types/ui.js';
 
 export interface ThemeContextType {
 	currentTheme: ThemePreset;

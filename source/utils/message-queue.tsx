@@ -56,6 +56,6 @@ export function addMessageToQueue(type: MessageType, message: string, hideBox:bo
 }
 
 
-export function logError(message:string, hideBox: boolean=true) {
+export function logError(n: boolean=true) {
 	addMessageToQueue('error', message, hideBox);
 }

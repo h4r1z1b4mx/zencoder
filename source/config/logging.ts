@@ -1,4 +1,4 @@
-import { LogLevel } from "../types/config"
+import { LogLevel } from "../types/config.js"
 
 
 let currentLogLevel: LogLevel = 'normal';
