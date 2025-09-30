@@ -30,6 +30,13 @@ export interface Tool {
 
 export type ToolHandler = (input:any) => Promise<string>;
 
+export interface ToolDefinition {
+	handler: ToolHandler;
+	config: Tool;
+	formatter?: (args: any, result?: string) => string | Promise<string> | React.ReactElement | Promise<React.ReactElement>;
+	requiresConfirmation?:boolean;
+}
+
 export interface LLMClient {
 	getCurrentModel(): string;
 	setModel(model:string): void;
