@@ -1,10 +1,13 @@
 import { ToolDefinition, ToolHandler } from "../types/core.js";
+import { readFileTool } from "./read-file.js";
 
 
 
 
 export const toolDefinitions: ToolDefinition[] = [
-	readFileTool, 
+	readFileTool,
+	createFileTool,
+	
 ];
 
 
