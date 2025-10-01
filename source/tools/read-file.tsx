@@ -1,9 +1,10 @@
-import { resolve } from "path";
+import path, { resolve } from "path";
 import { ToolDefinition, ToolHandler } from "../types/core.js";
 import { read, readFile } from "fs";
 import React, { memo, useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../hooks/useTheme.js";
 import { Box, Text } from "ink";
+import ToolMessage from "../components/tool-message.js";
 
 
 const handler: ToolHandler = async (args: {path: string}): Promise<string> => {
@@ -36,7 +37,7 @@ const handler: ToolHandler = async (args: {path: string}): Promise<string> => {
 
 
 const ReadFileFormatter = memo(({args} : {args:any}) => {
-	const {colors} = useContext(ThemeContext);
+	const { colors } = useContext(ThemeContext);
 	const path = args.path || args.file_path || 'unknown';
 	const [fileInfo, setFileInfo] = useState({size:0, tokens: 0});
 
@@ -81,16 +82,34 @@ const ReadFileFormatter = memo(({args} : {args:any}) => {
 		</Box>
 	);
 
-
-	return 
-
+	return <ToolMessage message={messageContent} hideBox={true}/>
 });
 
 
 const formatter = async(args: any): Promise<React.ReactElement> => {
-	return
+	return <ReadFileFormatter args={args} />;
 }
 
 
 export const readFileTool: ToolDefinition = {
-}
+	handler,
+	formatter,
+	requiresConfirmation: false,
+	config: {
+		type:'function',
+		function:{
+			name:'read_file',
+			description:'Open the file and display its contents with line numbers to allow accurate editing using the edit_file tool.',
+			parameters:{
+				type:'object',
+				properties: {
+					path:{
+						type:'string',
+						description: 'The path to the file to read.',
+					}
+				},
+				required:['path']
+			},
+		},
+	},
+};
